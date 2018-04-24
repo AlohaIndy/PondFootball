@@ -14,14 +14,9 @@ import {
 } from "native-base";
 import {Col, Row, Grid} from 'react-native-easy-grid';
 
-import {
-    AdMobBanner,
-    AdMobInterstitial,
-    PublisherBanner,
-    AdMobRewarded,
-} from 'react-native-admob';
-
 import styles from "./styles";
+
+// import Test from "../Test/index";
 
 const logoMatch = require("../../../assets/match/test.png");
 const logoTeam = require("../../../assets/team/test.png");
@@ -258,6 +253,9 @@ export default class Match extends React.Component {
                         </TouchableOpacity>
                     </Card>
                 </Content>
+                <Footer>
+                    {/* <Test /> */}
+                </Footer>
                 <Footer>
                     <FooterTab>
                         <Button

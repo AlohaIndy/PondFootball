@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {
+  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -27,19 +28,22 @@ const BannerExample = ({
 
 const bannerWidths = [200, 250, 320];
 
-export default class Test extends React.Component {
+export default class Test extends Component {
+
   static navigationOptions = {
     header: null
   };
+
   constructor() {
     super();
     this.state = {
       fluidSizeIndex: 0
     };
   }
+
   componentDidMount() {
     AdMobRewarded.setTestDevices([AdMobRewarded.simulatorId]);
-    AdMobRewarded.setAdUnitID('ca-app-pub-3940256099942544/5224354917');
+    AdMobRewarded.setAdUnitID('/21617015150/45113683/21705891829');
 
     AdMobRewarded.addEventListener('rewarded', (reward) => console.log('AdMobRewarded => rewarded', reward));
     AdMobRewarded.addEventListener('adLoaded', () => console.log('AdMobRewarded => adLoaded'));
@@ -59,7 +63,7 @@ export default class Test extends React.Component {
       .catch(error => console.warn(error));
 
     AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-    AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712');
+    AdMobInterstitial.setAdUnitID('/21617015150/45113683/21705891643');
 
     AdMobInterstitial.addEventListener('adLoaded', () => console.log('AdMobInterstitial adLoaded'));
     AdMobInterstitial.addEventListener('adFailedToLoad', (error) => console.warn(error));
@@ -101,14 +105,14 @@ export default class Test extends React.Component {
           <BannerExample title="AdMob - Basic">
             <AdMobBanner
               adSize="banner"
-              adUnitID="ca-app-pub-3940256099942544/6300978111"
+              adUnitID="/21617015150/45113683/21697044823"
               ref={el => (this._basicExample = el)}/>
             <Button title="Reload" onPress={() => this._basicExample.loadBanner()}/>
           </BannerExample>
           <BannerExample title="Smart Banner">
             <AdMobBanner
               adSize="smartBannerPortrait"
-              adUnitID="ca-app-pub-3940256099942544/6300978111"
+              adUnitID="/21617015150/45113683/21697044823"
               ref={el => (this._smartBannerExample = el)}/>
             <Button title="Reload" onPress={() => this._smartBannerExample.loadBanner()}/>
           </BannerExample>

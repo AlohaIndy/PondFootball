@@ -13,7 +13,12 @@ import Login from '.././screens/Login';
 import Splash from '.././screens/Splash';
 import MatchDetail from '.././screens/MatchDetail';
 
+import Test from '.././screens/Test';
+
 const RootStack = StackNavigator({
+    Test: {
+        screen: Test
+    },
     Match: {
         screen: Match
     },
@@ -35,7 +40,7 @@ const RootStack = StackNavigator({
     MatchDetail: {
         screen: MatchDetail
     }
-}, {initialRouteName: 'Splash'});
+}, {initialRouteName: 'Test'});
 
 export default class setup extends React.Component {
     render() {

@@ -43,6 +43,9 @@ export default class MatchDetail extends React.Component {
         header: null
     };
     render() {
+        const { params } = this.props.navigation.state;
+        const keylink = params ? params.keylink : null;
+        console.warn(keylink);
         return (
             <Container>
                 <StatusBar barStyle="light-content"/>

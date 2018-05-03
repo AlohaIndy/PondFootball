@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, View, Image, Animated} from 'react-native';
+import {ImageBackground, View, Image, Animated, AsyncStorage} from 'react-native';
 
 import styles from "./styles";
 
@@ -11,11 +11,20 @@ export default class Splash extends React.Component {
         header: null
     };
     componentWillMount() {
-        setTimeout(() => {
-            this
-                .props
-                .navigation
-                .navigate('Login')
+        setTimeout( async() => {
+            var value = await AsyncStorage.getItem('user');
+            if (value !== null) {
+                this
+                    .props
+                    .navigation
+                    .navigate('Match');
+            } else {
+                this
+                    .props
+                    .navigation
+                    .navigate('Login')
+            };
+
         }, 3000)
     }
     render() {

@@ -14,6 +14,7 @@ import {
     StyleProvider,
     Badge
 } from "native-base";
+import { NavigationActions } from "react-navigation";
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
@@ -59,58 +60,70 @@ export default class News extends React.Component {
                     </Tab>
                 </Tabs>
                 <Footer>
-                    <FooterTab>
-                        <Button
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Match')
-                        }}>
-                            <Icon name="stopwatch"/>
-                            <Text style={styles.text}>แมตช์</Text>
-                        </Button>
-                        <Button
-                            active
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('News')
-                        }}>
-                            <Icon name="globe"/>
-                            <Text style={styles.text}>ข่าวสาร</Text>
-                        </Button>
-                        <Button 
-                            badge 
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Follow')
-                        }}>
-                            <Badge >
-                                <Text>51</Text>
-                            </Badge>
-                            <Icon active name="star"/>
-                            <Text style={styles.text}>ติดตาม</Text>
-                        </Button>
-                        <Button
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Menu')
-                        }}>
-                            <Icon name="menu"/>
-                            <Text style={styles.text}>เมนู</Text>
-                        </Button>
-                    </FooterTab>
-                </Footer>
+                        <FooterTab>
+                            <Button
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Match" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="stopwatch"/>
+                                <Text style={styles.text}>แมตช์</Text>
+                            </Button>
+                            <Button 
+                                active
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "News" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="globe"/>
+                                <Text style={styles.text}>ข่าวสาร</Text>
+                            </Button>
+                            <Button
+                                badge 
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Follow" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Badge >
+                                    <Text>51</Text>
+                                </Badge>
+                                <Icon active name="star"/>
+                                <Text style={styles.text}>ติดตาม</Text>
+                            </Button>
+                            <Button
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Menu" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="menu"/>
+                                <Text style={styles.text}>เมนู</Text>
+                            </Button>
+                        </FooterTab>
+                    </Footer>
             </Container>
         );
     }

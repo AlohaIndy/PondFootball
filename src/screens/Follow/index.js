@@ -14,6 +14,7 @@ import {
     StyleProvider,
     Badge
 } from "native-base";
+import { NavigationActions } from "react-navigation";
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 
@@ -64,35 +65,44 @@ export default class Follow extends React.Component {
                             <Button
                                 vertical
                                 onPress={() => {
-                                this
-                                    .props
-                                    .navigation
-                                    .navigate('Match')
-                            }}>
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Match" })]
+                                        })
+                                    );
+                                }}
+                            >
                                 <Icon name="stopwatch"/>
                                 <Text style={styles.text}>แมตช์</Text>
                             </Button>
-                            <Button
+                            <Button 
                                 vertical
                                 onPress={() => {
-                                this
-                                    .props
-                                    .navigation
-                                    .navigate('News')
-                            }}>
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "News" })]
+                                        })
+                                    );
+                                }}
+                            >
                                 <Icon name="globe"/>
                                 <Text style={styles.text}>ข่าวสาร</Text>
                             </Button>
-                            <Button 
-                                active 
+                            <Button
+                                active
                                 badge 
                                 vertical
                                 onPress={() => {
-                                this
-                                    .props
-                                    .navigation
-                                    .navigate('Follow')
-                            }}>
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Follow" })]
+                                        })
+                                    );
+                                }}
+                            >
                                 <Badge >
                                     <Text>51</Text>
                                 </Badge>
@@ -102,11 +112,14 @@ export default class Follow extends React.Component {
                             <Button
                                 vertical
                                 onPress={() => {
-                                this
-                                    .props
-                                    .navigation
-                                    .navigate('Menu')
-                            }}>
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Menu" })]
+                                        })
+                                    );
+                                }}
+                            >
                                 <Icon name="menu"/>
                                 <Text style={styles.text}>เมนู</Text>
                             </Button>

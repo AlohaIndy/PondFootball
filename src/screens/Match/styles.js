@@ -14,6 +14,11 @@ export default {
 				text : {
 								fontFamily: fonts.Kanit
 				},
+				fontHeader : {
+								fontFamily: fonts.KanitBold,
+								color: 'orange',
+								fontSize: 20
+				},
 				cardTextHeader : {
 								fontFamily: fonts.KanitBold,
 								color: 'black',

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StatusBar, Image, TouchableOpacity} from 'react-native';
+import {View, StatusBar, Image, TouchableOpacity, AsyncStorage} from 'react-native';
 import {
     Text,
     Container,
@@ -15,6 +15,7 @@ import {
     ListItem,
     Thumbnail
 } from "native-base";
+import { NavigationActions } from "react-navigation";
 import {Col, Row, Grid} from 'react-native-easy-grid';
 
 import styles from "./styles";
@@ -25,6 +26,10 @@ export default class Menu extends React.Component {
     static navigationOptions = {
         header: null
     };
+    logout = async() => {
+        await AsyncStorage.removeItem('user');
+        this.props.navigation.navigate('Login');
+    }
     render() {
         return (
             <Container>
@@ -62,7 +67,7 @@ export default class Menu extends React.Component {
                                 <Text style={styles.listText}>นโยบายความเป็นส่วนตัว</Text>
                             </ListItem>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.logout}>
                             <ListItem>
                                 <Text style={styles.listText}>ออกจากระบบ</Text>
                             </ListItem>
@@ -70,58 +75,70 @@ export default class Menu extends React.Component {
                     </List>
                 </Content>
                 <Footer>
-                    <FooterTab>
-                        <Button
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Match')
-                        }}>
-                            <Icon name="stopwatch"/>
-                            <Text style={styles.text}>แมตช์</Text>
-                        </Button>
-                        <Button
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('News')
-                        }}>
-                            <Icon name="globe"/>
-                            <Text style={styles.text}>ข่าวสาร</Text>
-                        </Button>
-                        <Button
-                            badge
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Follow')
-                        }}>
-                            <Badge >
-                                <Text>51</Text>
-                            </Badge>
-                            <Icon active name="star"/>
-                            <Text style={styles.text}>ติดตาม</Text>
-                        </Button>
-                        <Button
-                            active
-                            vertical
-                            onPress={() => {
-                            this
-                                .props
-                                .navigation
-                                .navigate('Menu')
-                        }}>
-                            <Icon name="menu"/>
-                            <Text style={styles.text}>เมนู</Text>
-                        </Button>
-                    </FooterTab>
-                </Footer>
+                        <FooterTab>
+                            <Button
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Match" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="stopwatch"/>
+                                <Text style={styles.text}>แมตช์</Text>
+                            </Button>
+                            <Button 
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "News" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="globe"/>
+                                <Text style={styles.text}>ข่าวสาร</Text>
+                            </Button>
+                            <Button
+                                badge 
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Follow" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Badge >
+                                    <Text>51</Text>
+                                </Badge>
+                                <Icon active name="star"/>
+                                <Text style={styles.text}>ติดตาม</Text>
+                            </Button>
+                            <Button
+                                active
+                                vertical
+                                onPress={() => {
+                                    this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Menu" })]
+                                        })
+                                    );
+                                }}
+                            >
+                                <Icon name="menu"/>
+                                <Text style={styles.text}>เมนู</Text>
+                            </Button>
+                        </FooterTab>
+                    </Footer>
             </Container>
         );
     }

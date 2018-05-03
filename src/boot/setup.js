@@ -11,14 +11,14 @@ import Follow from '.././screens/Follow';
 import Menu from '.././screens/Menu';
 import Login from '.././screens/Login';
 import Splash from '.././screens/Splash';
+
 import MatchDetail from '.././screens/MatchDetail';
+import Search from '.././screens/Search';
 
 import Test from '.././screens/Test';
+import Tests from '.././screens/Tests';
 
-const RootStack = StackNavigator({
-    Test: {
-        screen: Test
-    },
+const MainStack = StackNavigator({
     Match: {
         screen: Match
     },
@@ -37,10 +37,28 @@ const RootStack = StackNavigator({
     Splash: {
         screen: Splash
     },
+    Test: {
+        screen: Test
+    },
+    Tests: {
+        screen: Tests
+    },
+}, {initialRouteName: 'Splash'});
+
+const RootStack = StackNavigator({
+    Main: {
+        screen: MainStack   
+    },
     MatchDetail: {
         screen: MatchDetail
+    },
+    Search: {
+        screen: Search
     }
-}, {initialRouteName: 'Test'});
+}, {
+    mode: 'modal',
+    headerMode: 'none'
+});
 
 export default class setup extends React.Component {
     render() {

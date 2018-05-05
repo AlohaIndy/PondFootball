@@ -11,7 +11,7 @@ import {
 } from 'native-base';
 import SendSMS from 'react-native-sms'
 
-export default class SearchBarExample extends Component {
+export default class SMS extends Component {
   static navigationOptions = {
     header: null
   };

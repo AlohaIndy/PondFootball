@@ -28,7 +28,12 @@ export default class Menu extends React.Component {
     };
     logout = async() => {
         await AsyncStorage.removeItem('user');
-        this.props.navigation.navigate('Login');
+        this.props.navigation.dispatch(
+                                        NavigationActions.reset({
+                                        index: 0,
+                                        actions: [NavigationActions.navigate({ routeName: "Login" })]
+                                        })
+                                    );
     }
     render() {
         return (
@@ -42,36 +47,36 @@ export default class Menu extends React.Component {
                         </View>
                     </TouchableOpacity>
                     <List style={{backgroundColor: 'white'}}>
-                        <TouchableOpacity>
+                        
                             <ListItem>
-                                <Text style={styles.listText}>อันดับฟีฟ่า</Text>
+                                <TouchableOpacity><Text style={styles.listText}>อันดับฟีฟ่า</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
+                        
+                        
                             <ListItem>
-                                <Text style={styles.listText}>เอาโฆษณาออก</Text>
+                                <TouchableOpacity><Text style={styles.listText}>เอาโฆษณาออก</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
+                        
+                        
                             <ListItem>
-                                <Text style={styles.listText}>การตั้งค่า</Text>
+                                <TouchableOpacity><Text style={styles.listText}>การตั้งค่า</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
+                        
+                        
                             <ListItem>
-                                <Text style={styles.listText}>ส่งความคิดเห็น</Text>
+                                <TouchableOpacity><Text style={styles.listText}>ส่งความคิดเห็น</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
+                        
+                        
                             <ListItem>
-                                <Text style={styles.listText}>นโยบายความเป็นส่วนตัว</Text>
+                                <TouchableOpacity><Text style={styles.listText}>นโยบายความเป็นส่วนตัว</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={this.logout}>
+                        
+                       
                             <ListItem>
-                                <Text style={styles.listText}>ออกจากระบบ</Text>
+                                <TouchableOpacity onPress={this.logout}><Text style={styles.listText}>ออกจากระบบ</Text></TouchableOpacity>
                             </ListItem>
-                        </TouchableOpacity>
+                        
                     </List>
                 </Content>
                 <Footer>

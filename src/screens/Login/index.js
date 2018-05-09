@@ -67,7 +67,7 @@ export default class Login extends React.Component {
     login = async() => {
         alert('URL => ' + API.login);
         // this.setState({     inputUsername: true,     inputPassword: false,
-        // inputUsernamePlaceholder: '5555',     inputPasswordPlaceholder: 'Password',
+        // inputUsernamePlaceholder: 'Username',     inputPasswordPlaceholder: 'Password',
         // });
 
         await AsyncStorage.setItem('user', 'token');

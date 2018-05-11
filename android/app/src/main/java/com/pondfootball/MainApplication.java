@@ -3,6 +3,7 @@ package com.pondfootball;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.react.SmsPackage;
 import com.auth0.react.A0Auth0Package;
 import com.tkporter.sendsms.SendSMSPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SmsPackage(),
             new A0Auth0Package(),
           SendSMSPackage.getInstance(),
           new RNAdMobPackage(),

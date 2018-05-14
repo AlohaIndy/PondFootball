@@ -17,6 +17,7 @@ import {
     Left,
     Title
 } from "native-base";
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import { NavigationActions } from "react-navigation";
 import {Col, Row, Grid} from 'react-native-easy-grid';
 
@@ -31,8 +32,33 @@ export default class Match extends React.Component {
     static navigationOptions = {
         header: null
     };
-    static defaultProps = {
-        date: new Date().toLocaleString()
+    constructor(props) {
+        super(props);
+        this.state = {
+          dataDate: "don't have",
+          sendDate: new Date().toDateString().substring(4,15)
+        }
+    };
+    state = {
+        isDateTimePickerVisible: false
+    
+    };
+    _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
+
+    _hideDateTimePicker = () => this.setState({isDateTimePickerVisible: false});
+  
+    _handleDatePicked = (date) => {
+      this.setState({
+        dataDate: "" + date,
+      });
+    //   var choosedDate=this.state.dataDate.substring(8,10);
+    //   var choosedMont=this.state.dataDate.substring(4,7);
+    //   var choosedYear=this.state.dataDate.substring(11,15);
+    //   console.warn(this.state.dataDate.substring(4,15));
+      this.setState({
+          sendDate: this.state.dataDate.substring(4,15)
+      });
+      this._hideDateTimePicker();
     };
     render() {
         // console.warn(this.props.date);
@@ -47,13 +73,18 @@ export default class Match extends React.Component {
                         <Button transparent onPress={() => {this.props.navigation.navigate('Search');}}>
                         <Icon style={{color: 'orange'}} name='search' />
                         </Button>
-                        <Button transparent onPress={() => {this.props.navigation.navigate('Search');}}>
+                        <Button transparent onPress={this._showDateTimePicker}>
                         <Icon style={{color: 'orange'}} name='calendar' />
                         </Button>
                     </Right>
                 </Header>
                 <Content style={{backgroundColor: '#DCDCDC',flex: 1}}>
-                    <Data date={this.props.date} navigation={this.props.navigation} />
+                    <DateTimePicker
+                        isVisible={this.state.isDateTimePickerVisible}
+                        onConfirm={this._handleDatePicked}
+                        onCancel={this._hideDateTimePicker}
+                        mode='date'/>
+                    <Data date={this.state.sendDate} navigation={this.props.navigation} />
                 </Content>
                 <Footer>
                     <FooterTab>
@@ -133,6 +164,7 @@ class Data extends React.Component {
         }
     };
     componentDidMount() {
+        console.warn("load data: "+this.props.date);
         // return fetch(API.match+this.props.date).then((response) => response.json()).then((responseJson) => {
         //   this
         //     .setState({

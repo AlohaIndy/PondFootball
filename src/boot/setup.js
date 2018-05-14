@@ -43,7 +43,7 @@ const MainStack = StackNavigator({
     Tests: {
         screen: Tests
     },
-}, {initialRouteName: 'Tests'});
+}, {initialRouteName: 'Splash'});
 
 const RootStack = StackNavigator({
     Main: {
